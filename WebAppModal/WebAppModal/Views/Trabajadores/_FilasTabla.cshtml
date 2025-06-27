@@ -1,0 +1,18 @@
+﻿@model IEnumerable<WebAppModal.Models.Trabajadores>
+
+@foreach (var item in Model)
+{
+    <tr style="@(item.Sexo == "M" ? "background-color: #e6f2ff;" : "background-color: #ffebf3;")">
+        <td>@item.TipoDocumento</td>
+        <td>@item.NumeroDocumento</td>
+        <td>@item.Nombres</td>
+        <td>@(item.Sexo == "M" ? "Masculino" : "Femenino")</td>
+        <td>@item.IdDepartamentoNavigation?.NombreDepartamento</td>
+        <td>@item.IdProvinciaNavigation?.NombreProvincia</td>
+        <td>@item.IdDistritoNavigation?.NombreDistrito</td>
+        <td>
+            <button class="btn btn-warning btn-edit" data-id="@item.Id">Editar</button>
+            <button class="btn btn-danger btn-delete" data-id="@item.Id">Eliminar</button>
+        </td>
+    </tr>
+}

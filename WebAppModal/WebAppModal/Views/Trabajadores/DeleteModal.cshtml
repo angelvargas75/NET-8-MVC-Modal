@@ -1,0 +1,39 @@
+﻿@model WebAppModal.Models.Trabajadores
+
+<div class="modal fade" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title">Confirmar Eliminación</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <form method="post">
+                <div class="modal-body">
+                    <p>¿Está seguro que desea eliminar al trabajador?</p>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h6>@Model.Nombres</h6>
+                            <p class="mb-1">@Model.TipoDocumento-@Model.NumeroDocumento</p>
+                            <small class="text-muted">
+                                @Model.IdDepartamentoNavigation?.NombreDepartamento /
+                                @Model.IdProvinciaNavigation?.NombreProvincia /
+                                @Model.IdDistritoNavigation?.NombreDistrito
+                            </small>
+                        </div>
+                    </div>
+                    <div class="alert alert-warning mb-0">
+                        <i class="fas fa-exclamation-triangle"></i> Acción irreversible
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-trash-alt"></i> Eliminar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,60 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+
+/*<<<<<<<<<< Mejora la apariencia visual de la vista de confirmación de eliminación >>>>>>>>>>>*/
+.row dl {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.row dt {
+    font-weight: 500;
+    color: #495057;
+}
+
+.row dd {
+    margin-bottom: 15px;
+}
+
+.alert-danger {
+    border-left: 5px solid #dc3545;
+}
+
+* hover para mejor interactividad */
+.table tbody tr:hover {
+    opacity: 0.9;
+}
+/*<<<<<<<<<<  >>>>>>>>>>>*/
+
+
+/* Asegura que el dropdown no se corte en modales */
+.select2-container {
+    z-index: 1051 !important; /* Mayor que el z-index de Bootstrap modal (1050) */
+}
+
+/* Espaciado entre combos */
+.select2 {
+    margin-bottom: 15px;
+}

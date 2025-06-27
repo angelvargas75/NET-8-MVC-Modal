@@ -1,0 +1,79 @@
+﻿@model WebAppModal.Models.Trabajadores
+
+<div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+<!-- Fila 1 -->
+<div class="row mb-3">
+	<div class="col-md-6">
+		<label asp-for="TipoDocumento" class="form-label">Tipo Documento *</label>
+		<select asp-for="TipoDocumento" class="form-select select2" required>
+			<option value="">-- Seleccione --</option>
+			<option value="DNI">DNI</option>
+			<option value="CE">Carné de Extranjería</option>
+			<option value="PAS">Pasaporte</option>
+		</select>
+		<span asp-validation-for="TipoDocumento" class="text-danger"></span>
+	</div>
+
+	<div class="col-md-6">
+		<label asp-for="NumeroDocumento" class="form-label">Número Documento *</label>
+		<input asp-for="NumeroDocumento" class="form-control" required />
+		<span asp-validation-for="NumeroDocumento" class="text-danger"></span>
+	</div>
+</div>
+
+<!-- Fila 2 -->
+<div class="row mb-3">
+	<div class="col-12">
+		<label asp-for="Nombres" class="form-label">Nombres Completos *</label>
+		<input asp-for="Nombres" class="form-control" required />
+		<span asp-validation-for="Nombres" class="text-danger"></span>
+	</div>
+</div>
+
+<!-- Fila 3 -->
+<div class="row mb-3">
+	<div class="col-md-6">
+		<label class="form-label">Sexo *</label>
+		<div class="d-flex gap-3">
+			<div class="form-check">
+				<input class="form-check-input" type="radio" asp-for="Sexo" value="M" required />
+				<label class="form-check-label">Masculino</label>
+			</div>
+			<div class="form-check">
+				<input class="form-check-input" type="radio" asp-for="Sexo" value="F" />
+				<label class="form-check-label">Femenino</label>
+			</div>
+		</div>
+		<span asp-validation-for="Sexo" class="text-danger"></span>
+	</div>
+</div>
+
+<!-- Fila 4 - Ubigeo -->
+<div class="row mb-3">
+	<div class="col-md-4">
+		<div class="form-group">
+			<label asp-for="IdDepartamento" class="form-label">Departamento *</label>
+			<select asp-for="IdDepartamento" asp-items="@ViewBag.Departamentos" class="form-select select2" required>
+				<option value="">-- Seleccione --</option>
+			</select>
+			<span asp-validation-for="IdDepartamento" class="text-danger"></span>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<label asp-for="IdProvincia" class="form-label">Provincia *</label>
+		<select asp-for="IdProvincia" class="form-select select2" asp-items="ViewBag.Provincias" required>
+			<option value="">-- Seleccione departamento --</option>
+		</select>
+		<span asp-validation-for="IdProvincia" class="text-danger"></span>
+	</div>
+
+	<div class="col-md-4">
+		<label asp-for="IdDistrito" class="form-label">Distrito *</label>
+		<select asp-for="IdDistrito" class="form-select select2" asp-items="ViewBag.Distritos" required>
+			<option value="">-- Seleccione provincia --</option>
+		</select>
+		<span asp-validation-for="IdDistrito" class="text-danger"></span>
+	</div>
+</div>
