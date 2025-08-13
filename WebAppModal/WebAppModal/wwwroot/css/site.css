@@ -42,7 +42,7 @@ body {
     border-left: 5px solid #dc3545;
 }
 
-* hover para mejor interactividad */
+/* hover para mejor interactividad */
 .table tbody tr:hover {
     opacity: 0.9;
 }
@@ -58,3 +58,18 @@ body {
 .select2 {
     margin-bottom: 15px;
 }
+
+
+/* Botones uno al lado del otro */
+#tabla-trabajadores td:last-child {
+    white-space: nowrap;
+}
+
+/* Truncar nombres largos con "..." */
+#tabla-trabajadores td:nth-child(3) {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 250px; /* ajusta el ancho a tu gusto */
+}
+

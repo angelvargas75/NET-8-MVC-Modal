@@ -1,10 +1,4 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
-
-
-$(document).ready(function () {
+﻿$(document).ready(function () {
     // Manejar clic en botón editar
     $(document).on('click', '.btn-edit', function () {
         var id = $(this).data('id');
@@ -134,25 +128,6 @@ $(document).ready(function () {
     }
 
 
-    // Carga de la tabla en ajax
-    $(document).ready(function () {
-        $('#sexoFiltro').on('change', function () {
-            var sexo = $(this).val();
-            $.ajax({
-                url: '/Trabajadores/Index',
-                type: 'GET',
-                data: { sexoFiltro: sexo },
-                success: function (data) {
-                    $('#tabla-trabajadores tbody').html(data);
-                },
-                error: function () {
-                    alert('Error al filtrar trabajadores.');
-                }
-            });
-        });
-    });
-
-
     // Al cerrar el modal de crear, limpia todos los campos
     $('#createModal01').on('hidden.bs.modal', function () {
         const $form = $(this).find('form');
@@ -160,6 +135,34 @@ $(document).ready(function () {
         $form[0].reset(); // limpia los inputs
         $form.find('.select2').val(null).trigger('change'); // limpia selects select2
         $form.find('.text-danger').text(''); // limpia errores de validación
+    });
+
+
+    // Cargar la tabla en ajax con paginacion DataTable
+    var configDataTable = {
+        pageLength: 10,
+        lengthMenu: [10, 25, 50, 100],
+        pagingType: 'simple_numbers',
+        language: { url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json' }
+    };
+
+    var tabla = $('#tabla-trabajadores').DataTable(configDataTable);
+
+    $('#sexoFiltro').on('change', function () {
+        var sexo = $(this).val();
+        $.ajax({
+            url: '/Trabajadores/Index',
+            type: 'GET',
+            data: { sexoFiltro: sexo },
+            success: function (data) {
+                tabla.destroy();
+                $('#tabla-trabajadores tbody').html(data);
+                tabla = $('#tabla-trabajadores').DataTable(configDataTable);
+            },
+            error: function () {
+                alert('Error al filtrar trabajadores.');
+            }
+        });
     });
 
 });

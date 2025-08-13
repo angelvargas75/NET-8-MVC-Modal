@@ -2,86 +2,90 @@
 
 
 <div class="text-center mb-4">
-    @{
-        ViewData["Title"] = "Listado de Trabajadores";
-    }
-    <h1>Listado de Trabajadores</h1>
+	@{
+		ViewData["Title"] = "Listado de Trabajadores";
+	}
+	<h1>Listado de Trabajadores</h1>
 </div>
 
 @if (TempData["SuccessMessage"] != null)
 {
-    <div class="alert alert-success alert-dismissible fade show" id="successAlert">
-        @TempData["SuccessMessage"]
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+	<div class="alert alert-success alert-dismissible fade show" id="successAlert">
+		@TempData["SuccessMessage"]
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
 }
 @if (TempData["ErrorMessage"] != null)
 {
-    <div class="alert alert-danger alert-dismissible fade show">
-        @TempData["ErrorMessage"]
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+	<div class="alert alert-danger alert-dismissible fade show">
+		@TempData["ErrorMessage"]
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
 }
 
 <button type="button"
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#createModal01">
-        Nuevo
+		class="btn btn-primary"
+		data-bs-toggle="modal"
+		data-bs-target="#createModal01">
+	Nuevo
 </button>
+<br />
 
 <partial name="CreateModal" model="new Trabajadores()" />
 <partial name="EditModal" model="new Trabajadores()" />
 <partial name="DeleteModal" model="new Trabajadores()" />
 
 <div class="row mb-3">
-    <div class="col-md-3">
-        <form asp-action="Index" method="get" class="form-inline">
-            <div class="input-group">
-                <label class="input-group-text" for="sexoFiltro">Filtrar por sexo:</label>
-                <select id="sexoFiltro" name="sexoFiltro">
-                    <option value="">Todos</option>
-                    <option value="M" selected='@(ViewBag.SexoFiltro == "M")'>Masculino</option>
-                    <option value="F" selected='@(ViewBag.SexoFiltro == "F")'>Femenino</option>
-                </select>
-            </div>
-        </form>
-    </div>
+	<div class="col-md-3">
+		<form asp-action="Index" method="get" class="form-inline">
+			<div class="input-group">
+				<label class="input-group-text" for="sexoFiltro">Filtrar por sexo:</label>
+				<select id="sexoFiltro" name="sexoFiltro">
+					<option value="">Todos</option>
+					<option value="M" selected='@(ViewBag.SexoFiltro == "M")'>Masculino</option>
+					<option value="F" selected='@(ViewBag.SexoFiltro == "F")'>Femenino</option>
+				</select>
+			</div>
+		</form>
+	</div>
 </div>
 <br />
+
 <table id="tabla-trabajadores" class="table table-hover">
-    <thead>
-        <tr>
-            <th>Tipo Documento</th>
-            <th>Nro Documento</th>
-            <th>Nombres</th>
-            <th>Sexo</th>
-            <th>Departamento</th>
-            <th>Provincia</th>
-            <th>Distrito</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr style="@(item.Sexo == "M" ? "background-color: #e6f2ff;" : "background-color: #ffebf3;")">
-                <td>@Html.DisplayFor(modelItem => item.TipoDocumento)</td>
-                <td>@Html.DisplayFor(modelItem => item.NumeroDocumento)</td>
-                <td>@Html.DisplayFor(modelItem => item.Nombres)</td>
-                <td>@(item.Sexo == "M" ? "Masculino" : "Femenino")</td>
-                <td>@Html.DisplayFor(modelItem => item.IdDepartamentoNavigation.NombreDepartamento)</td>
-                <td>@Html.DisplayFor(modelItem => item.IdProvinciaNavigation.NombreProvincia)</td>
-                <td>@Html.DisplayFor(modelItem => item.IdDistritoNavigation.NombreDistrito)</td>
-                <td>
-                    <button class="btn btn-warning btn-edit" data-id="@item.Id">
-                        Editar
-                    </button>
-                    <button class="btn btn-danger btn-delete" data-id="@item.Id">
-                        <i class="fas fa-trash-alt"></i> Eliminar
-                    </button>
-                </td>
-            </tr>
-        }
-    </tbody>
+	<thead>
+		<tr>
+			<th>Tipo Documento</th>
+			<th>Nro Documento</th>
+			<th>Nombres</th>
+			<th>Sexo</th>
+			<th>Departamento</th>
+			<th>Provincia</th>
+			<th>Distrito</th>
+			<th>Acciones</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr style="@(item.Sexo == "M" ? "background-color: #e6f2ff;" : "background-color: #ffebf3;")">
+				<td>@Html.DisplayFor(modelItem => item.TipoDocumento)</td>
+				<td>@Html.DisplayFor(modelItem => item.NumeroDocumento)</td>
+				<td>@Html.DisplayFor(modelItem => item.Nombres)</td>
+				<td>@(item.Sexo == "M" ? "Masculino" : "Femenino")</td>
+				<td>@Html.DisplayFor(modelItem => item.IdDepartamentoNavigation.NombreDepartamento)</td>
+				<td>@Html.DisplayFor(modelItem => item.IdProvinciaNavigation.NombreProvincia)</td>
+				<td>@Html.DisplayFor(modelItem => item.IdDistritoNavigation.NombreDistrito)</td>
+				<td>
+					<div class="d-flex flex-column flex-md-row gap-1">
+						<button class="btn btn-warning btn-edit" data-id="@item.Id">
+							Editar
+						</button>
+						<button class="btn btn-danger btn-delete" data-id="@item.Id">
+							<i class="fas fa-trash-alt"></i> Eliminar
+						</button>
+					</div>
+				</td>
+			</tr>
+		}
+	</tbody>
 </table>
