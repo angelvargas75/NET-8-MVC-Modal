@@ -1,6 +1,6 @@
-# 🧑‍💻 Mantenimiento de Trabajadores en ASP.NET Core MVC
+# 🧑‍💻 Mantenimiento de Trabajadores en .NET 8 MVC
 
-Este proyecto es el resultado del desarrollo de una prueba técnica para el puesto de **Programador Junior .NET Core**. Consiste en una aplicación web construida con **ASP.NET Core MVC 8** bajo el enfoque Database First de Entity Framework que permite gestionar un listado de trabajadores, incluyendo operaciones CRUD (Crear, Leer, Actualizar, Eliminar), todo con una experiencia moderna basada en **modales** y funcionalidades con **AJAX**.
+Este proyecto consiste en una aplicación web construida con **ASP.NET Core MVC (.NET 8)** bajo el enfoque Database First de Entity Framework que permite gestionar un listado de trabajadores, incluyendo operaciones CRUD (Crear, Leer, Actualizar, Eliminar), todo con una experiencia moderna basada en **modales** y funcionalidades con **AJAX**.
 
 ---
 
